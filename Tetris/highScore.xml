@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<players>
+  <player>
+    <name>Dimitar</name>
+    <score>4</score>
+  </player>
+  <player>
+    <name>Chocho</name>
+    <score>5</score>
+  </player>
+  <player>
+    <name>Smerch</name>
+    <score>3</score>
+  </player>
+  <player>
+    <name>Ayattolah</name>
+    <score>1</score>
+  </player>
+  <player>
+    <name>Hodja</name>
+    <score>2</score>
+  </player>
+  <player>
+    <name>Dimitar Chobanov</name>
+    <score>0</score>
+  </player>
+</players>
