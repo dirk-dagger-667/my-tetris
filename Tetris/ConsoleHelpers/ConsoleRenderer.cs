@@ -16,7 +16,42 @@
     {
         private const char BorderSymbol = '\u2593';
         private const char ShapeSymbol = '\u2588';
+        private const string GameName = "My Tetris";
+        private const string NextString = "   Next:";
+        private const string EmptySpaces = "             ";
+        private const string ScoreString = "   Score:";
+        private const string LevelString = "   Level:";
+        private const string ControlsString = "    Controls:";
+        private const string RotateRightString = "  ^ - rotate right";
+        private const string MoveLeftString = "  < - move left";
+        private const string MoveRightString = "  > - move right";
+        private const string MoveDownString = "  v - move down";
+        private const string GameOverString = string.Format(@"
+      ___           ___           ___           ___     
+     /  /\         /  /\         /__/\         /  /\    
+    /  /:/_       /  /::\       |  |::\       /  /:/_   
+   /  /:/ /\     /  /:/\:\      |  |:|:\     /  /:/ /\  
+  /  /:/_/::\   /  /:/~/::\   __|__|:|\:\   /  /:/ /:/_ 
+ /__/:/__\/\:\ /__/:/ /:/\:\ /__/::::| \:\ /__/:/ /:/ /\
+ \  \:\ /~~/:/ \  \:\/:/__\/ \  \:\~~\__\/ \  \:\/:/ /:/
+  \  \:\  /:/   \  \::/       \  \:\        \  \::/ /:/ 
+   \  \:\/:/     \  \:\        \  \:\        \  \:\/:/  
+    \  \::/       \  \:\        \  \:\        \  \::/   
+     \__\/         \__\/         \__\/         \__\/    
+      ___                        ___           ___     
+     /  /\          ___         /  /\         /  /\    
+    /  /::\        /__/\       /  /:/_       /  /::\   
+   /  /:/\:\       \  \:\     /  /:/ /\     /  /:/\:\  
+  /  /:/  \:\       \  \:\   /  /:/ /:/_   /  /:/~/:/  
+ /__/:/ \__\:\  ___  \__\:\ /__/:/ /:/ /\ /__/:/ /:/___
+ \  \:\ /  /:/ /__/\ |  |:| \  \:\/:/ /:/ \  \:\/:::::/
+  \  \:\  /:/  \  \:\|  |:|  \  \::/ /:/   \  \::/~~~~ 
+   \  \:\/:/    \  \:\__|:|   \  \:\/:/     \  \:\     
+    \  \::/      \__\::::/     \  \::/       \  \:\    
+     \__\/           ~~~~       \__\/         \__\/    
 
+");
+            
         public static void DrawOnPosition(int row, int col, object data)
         {
             Console.SetCursorPosition(col, row);
@@ -60,7 +95,7 @@
         public static void ConsoleSettings(int fullGameWidth, int fullGameHeight)
         {
             Console.CursorVisible = false;
-            Console.Title = "My Tetris";
+            Console.Title = GameName;
             Console.WindowWidth = fullGameWidth;
             Console.BufferWidth = fullGameWidth;
             Console.WindowHeight = fullGameHeight + 1;
@@ -71,28 +106,28 @@
         {
             Console.ForegroundColor = ConsoleColor.White;
 
-            DrawOnPosition(1, playGroundWidth + 4, "   Next:");
+            DrawOnPosition(1, playGroundWidth + 4, NextString);
 
             for (int i = 2; i <= 5; i++)
             {
-                DrawOnPosition(i, playGroundWidth + 2, "            ");
+                DrawOnPosition(i, playGroundWidth + 2, EmptySpaces);
             }
 
             DrawFigure(nextShape, 2, playGroundWidth + 9);
 
-            DrawOnPosition(9, playGroundWidth + 4, "   Score:");
+            DrawOnPosition(9, playGroundWidth + 4, ScoreString);
             int scoreStartposition = ((infoPanelWidth / 2) - (score.ToString().Length - 1)) / 2;
             scoreStartposition = scoreStartposition + playGroundWidth + 2;
             DrawOnPosition(10, scoreStartposition - 1, score);
 
-            DrawOnPosition(11, playGroundWidth + 4, "   Level:");
+            DrawOnPosition(11, playGroundWidth + 4, LevelString);
             DrawOnPosition(12, playGroundWidth + 10, level);
 
-            DrawOnPosition(13, playGroundWidth + 3, "    Controls:");
-            DrawOnPosition(14, playGroundWidth + 2, "  ^ - rotate right");
-            DrawOnPosition(15, playGroundWidth + 2, "  < - move left");
-            DrawOnPosition(16, playGroundWidth + 2, "  > - move right");
-            DrawOnPosition(17, playGroundWidth + 2, "  v - move down");
+            DrawOnPosition(13, playGroundWidth + 3, ControlsString);
+            DrawOnPosition(14, playGroundWidth + 2, RotateRightString);
+            DrawOnPosition(15, playGroundWidth + 2, MoveLeftString);
+            DrawOnPosition(16, playGroundWidth + 2, MoveRightString);
+            DrawOnPosition(17, playGroundWidth + 2, MoveDownString;
         }
 
         public static void DrawPlayGround(IPlayGround playGround)
@@ -124,36 +159,8 @@
             Console.BufferWidth = Console.WindowWidth;
             Console.BufferHeight = Console.WindowHeight;
             Console.ForegroundColor = ConsoleColor.Red;
-            var gameOverString = string.Format(@"
-      ___           ___           ___           ___     
-     /  /\         /  /\         /__/\         /  /\    
-    /  /:/_       /  /::\       |  |::\       /  /:/_   
-   /  /:/ /\     /  /:/\:\      |  |:|:\     /  /:/ /\  
-  /  /:/_/::\   /  /:/~/::\   __|__|:|\:\   /  /:/ /:/_ 
- /__/:/__\/\:\ /__/:/ /:/\:\ /__/::::| \:\ /__/:/ /:/ /\
- \  \:\ /~~/:/ \  \:\/:/__\/ \  \:\~~\__\/ \  \:\/:/ /:/
-  \  \:\  /:/   \  \::/       \  \:\        \  \::/ /:/ 
-   \  \:\/:/     \  \:\        \  \:\        \  \:\/:/  
-    \  \::/       \  \:\        \  \:\        \  \::/   
-     \__\/         \__\/         \__\/         \__\/    
-      ___                        ___           ___     
-     /  /\          ___         /  /\         /  /\    
-    /  /::\        /__/\       /  /:/_       /  /::\   
-   /  /:/\:\       \  \:\     /  /:/ /\     /  /:/\:\  
-  /  /:/  \:\       \  \:\   /  /:/ /:/_   /  /:/~/:/  
- /__/:/ \__\:\  ___  \__\:\ /__/:/ /:/ /\ /__/:/ /:/___
- \  \:\ /  /:/ /__/\ |  |:| \  \:\/:/ /:/ \  \:\/:::::/
-  \  \:\  /:/  \  \:\|  |:|  \  \::/ /:/   \  \::/~~~~ 
-   \  \:\/:/    \  \:\__|:|   \  \:\/:/     \  \:\     
-    \  \::/      \__\::::/     \  \::/       \  \:\    
-     \__\/           ~~~~       \__\/         \__\/    
 
-");
-
-            DrawOnPosition(
-                1, 
-                1, 
-            gameOverString);
+            DrawOnPosition(1, 1, GameOverString);
         }
 
         public static void DrawPlyerPositionInHighScore(IDictionary<string, int> sortedHighScore, string playerName)

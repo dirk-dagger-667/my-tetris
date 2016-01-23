@@ -18,6 +18,7 @@
         private const int FullGameWidth = PlayGroundWidth + InfoPanelWidth + 3;
         private const int FullGameHeight = PlayGroundHeight + 2;
         private const string FilePath = "../../../highScore.xml";
+        private const string EnterYouNameMSG = "Please enter your name: ";
 
         // maximum number of removed lines at once
         private static int[] scorePerLines = new int[] { 10, 20, 30, 40 };
@@ -93,11 +94,11 @@
                     ConsoleRenderer.DrawGameOver();
                     Thread.Sleep(1000);
                     Console.Clear();
-                    Console.Write("Please enter your name: ");
+                    Console.Write(EnterYouNameMSG);
                     string playerName = Console.ReadLine();
                     Console.Clear();
-                    this.HighScore.SaveHightScore(playerName, this.Score, "../../highScore.xml");
-                    var sortedHightScore = this.HighScore.LoadHighScore("../../highScore.xml");
+                    this.HighScore.SaveHightScore(playerName, this.Score, FilePath);
+                    var sortedHightScore = this.HighScore.LoadHighScore(FilePath);
                     ConsoleRenderer.DrawPlyerPositionInHighScore(sortedHightScore, playerName);
                     return;
                 }

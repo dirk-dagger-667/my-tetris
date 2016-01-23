@@ -1,6 +1,6 @@
 ﻿namespace Tetris.Tests.LogicTests
 {
-    
+
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -81,8 +81,7 @@
             var height = shape.Blocks.GetLength(1);
             var newBlocks = new byte[height, width];
 
-            if (shape.PositionY + width < playGroundWidth || shape.PositionX + height < playGroundHeight
-                || (shape.PositionY + width < playGroundWidth && shape.PositionX + height < playGroundHeight))
+            if (shape.PositionY + width < playGroundWidth && shape.PositionX + height < playGroundHeight)
             {
                 for (int col = 0; col < width; col++)
                 {
