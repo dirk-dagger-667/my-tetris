@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="LogicTests\LogicClassTest.cs" />
     <Compile Include="LogicTests\ShapeGeneratorTest.cs" />
+    <Compile Include="LogicTests\PlayGroundTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

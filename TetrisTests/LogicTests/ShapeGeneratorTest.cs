@@ -1,11 +1,9 @@
 ﻿namespace TetrisTests.LogicTests
 {
-    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     
     using Tetris.Blocks.Contracts;
     using Tetris.Logic;
-    using Tetris.Logic.Contracts;
 
     [TestClass]
     public class ShapeGeneratorTest
