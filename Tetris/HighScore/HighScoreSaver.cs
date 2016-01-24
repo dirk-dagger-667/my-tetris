@@ -9,7 +9,7 @@
 
     public class HighScoreSaver : IHighScoreSaver
     {
-        private const string DuplicateNamesMSG = "Cannot have duplicate names";
+        private const string DuplicateNamesMsg = "Cannot have duplicate names";
 
         public void SaveHightScore(string playerName, int score, string filePath)
         {
@@ -51,7 +51,7 @@
             {
                 if (playersByName.ContainsKey(player.Element("name").Value))
                 {
-                    throw new ArgumentException(DuplicateNamesMSG);
+                    throw new ArgumentException(DuplicateNamesMsg);
                 }
 
                 int currentPlayerScore = int.Parse(player.Element("score").Value);
