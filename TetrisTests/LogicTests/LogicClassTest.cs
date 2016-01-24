@@ -1,16 +1,17 @@
-﻿namespace Tetris.Tests.LogicTests
+﻿namespace Tetris.TestMethods.LogicTestMethods
 {
 
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using Tetris.Blocks;
+    using Tetris.Blocks.Contracts;
     using Tetris.Logic;
     using Tetris.Logic.Contracts;
-    using Tetris.Tests.LogicTests;
-
+    using Tetris.TestMethods.LogicTestMethods;
+    
     [TestClass]
-    public class LogicTest
+    public class LogicClassTest
     {
         private IGameLogic logic;
         private IPlayGround playGround;
@@ -25,7 +26,7 @@
         [TestMethod]
         public void MoveDownWhileNotAtTheBottomOfTheGrid()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
 
             logic.MoveDown(figure, 25);
 
@@ -36,7 +37,7 @@
         [TestMethod]
         public void MoveDownWhileAtTheBottomOfTheGrid()
         {
-            Figure figure = new TShape(25, 7);
+            IFigure figure = new TShape(25, 7);
 
             logic.MoveDown(figure, 25);
 
@@ -47,7 +48,7 @@
         [TestMethod]
         public void MoveRightWhileNotAtTheRightBorder()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
 
             logic.MoveRight(figure, 25);
 
@@ -58,7 +59,7 @@
         [TestMethod]
         public void MoveRightWhileAtTheRightBorder()
         {
-            Figure figure = new TShape(7, 24);
+            IFigure figure = new TShape(7, 24);
 
             logic.MoveRight(figure, 25);
 
@@ -69,7 +70,7 @@
         [TestMethod]
         public void MoveLeftWhileNotAtTheRightBorder()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
 
             logic.MoveLeft(figure);
 
@@ -80,7 +81,7 @@
         [TestMethod]
         public void MoveLeftWhileAtTheRightBorder()
         {
-            Figure figure = new TShape(7, 1);
+            IFigure figure = new TShape(7, 1);
 
             logic.MoveLeft(figure);
 
@@ -89,7 +90,7 @@
         }
 
         [TestMethod]
-        public void CheckForLinesWhileNoFullLinePresent()
+        public void CheckForLinesWhileNoFullLinesPresent()
         {
             for (int row = 0; row < playGround.Grid.GetLength(0); row++)
             {
@@ -117,7 +118,7 @@
         }
 
         [TestMethod]
-        public void CheckForLinesWhileTwoFullLinePresent()
+        public void CheckForLinesWhileTwoFullLinesPresent()
         {
             for (int col = 0; col < playGround.Grid.GetLength(1); col++)
             {
@@ -129,7 +130,7 @@
         }
 
         [TestMethod]
-        public void CheckForLinesWhileThreeFullLinePresent()
+        public void CheckForLinesWhileThreeFullLinesPresent()
         {
             for (int col = 0; col < playGround.Grid.GetLength(1); col++)
             {
@@ -142,7 +143,7 @@
         }
 
         [TestMethod]
-        public void CheckForLinesWhileFourFullLinePresent()
+        public void CheckForLinesWhileFourFullLinesPresent()
         {
             for (int col = 0; col < playGround.Grid.GetLength(1); col++)
             {
@@ -158,7 +159,7 @@
         [TestMethod]
         public void RotateFigureOnce()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
 
             Assert.AreEqual(1, figure.Blocks[0, 0]);
@@ -172,7 +173,7 @@
         [TestMethod]
         public void RotateFigureTwice()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
 
@@ -187,7 +188,7 @@
         [TestMethod]
         public void RotateFigureThrice()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
@@ -203,7 +204,7 @@
         [TestMethod]
         public void RotateFigureQuarce()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
             logic.Rotate(figure, playGround.Grid.GetLength(1), playGround.Grid.GetLength(0));
@@ -220,7 +221,7 @@
         [TestMethod]
         public void PlaceFigureInPlayGround()
         {
-            Figure figure = new TShape(7, 7);
+            IFigure figure = new TShape(7, 7);
 
             logic.PlaceShapeInPlayGround(figure, playGround);
 
@@ -235,7 +236,7 @@
         [TestMethod]
         public void CheckForGameOverTrue()
         {
-            Figure figure = new TShape(1, 4);
+            IFigure figure = new TShape(1, 4);
             logic.PlaceShapeInPlayGround(figure, playGround);
 
             logic.CheckForGameOver(playGround);
@@ -246,12 +247,48 @@
         [TestMethod]
         public void CheckForGameOverFalse()
         {
-            Figure figure = new TShape(5, 5);
+            IFigure figure = new TShape(5, 5);
             logic.PlaceShapeInPlayGround(figure, playGround);
 
             logic.CheckForGameOver(playGround);
 
             Assert.IsFalse(logic.CheckForGameOver(playGround) == true);
+        }
+
+        [TestMethod]
+        public void CheckForCollisionWhereThereIsNoCollision()
+        {
+            IFigure figure = new TShape(17, 7);
+
+            for (int col = 0; col < playGround.Grid.GetLength(1); col++)
+            {
+                playGround.Grid[19, col] = 1;
+            }
+
+            Assert.IsFalse(logic.CheckForCollision(figure, playGround));
+        }
+
+        [TestMethod]
+        public void CheckForCollisionWhilePositionIsNextToBottomBorder()
+        {
+            IFigure figure = new TShape(19, 5);
+            IFigure newFigure = new TShape(20, 5);
+
+            Assert.IsTrue(logic.CheckForCollision(figure, playGround));
+            Assert.IsTrue(logic.CheckForCollision(figure, playGround));
+        }
+
+        [TestMethod]
+        public void CheckForCollisionWhilePositionNextToExistingShape()
+        {
+            IFigure figure = new TShape(18, 7);
+
+            for (int col = 0; col < playGround.Grid.GetLength(1); col++)
+            {
+                playGround.Grid[19, col] = 1;
+            }
+
+            Assert.IsTrue(logic.CheckForCollision(figure, playGround));
         }
     }
 }

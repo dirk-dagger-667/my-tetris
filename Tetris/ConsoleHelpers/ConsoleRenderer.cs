@@ -26,7 +26,7 @@
         private const string MoveLeftString = "  < - move left";
         private const string MoveRightString = "  > - move right";
         private const string MoveDownString = "  v - move down";
-        private const string GameOverString = string.Format(@"
+        private const string GameOverString = @"
       ___           ___           ___           ___     
      /  /\         /  /\         /__/\         /  /\    
     /  /:/_       /  /::\       |  |::\       /  /:/_   
@@ -50,7 +50,7 @@
     \  \::/      \__\::::/     \  \::/       \  \:\    
      \__\/           ~~~~       \__\/         \__\/    
 
-");
+";
             
         public static void DrawOnPosition(int row, int col, object data)
         {
@@ -127,7 +127,7 @@
             DrawOnPosition(14, playGroundWidth + 2, RotateRightString);
             DrawOnPosition(15, playGroundWidth + 2, MoveLeftString);
             DrawOnPosition(16, playGroundWidth + 2, MoveRightString);
-            DrawOnPosition(17, playGroundWidth + 2, MoveDownString;
+            DrawOnPosition(17, playGroundWidth + 2, MoveDownString);
         }
 
         public static void DrawPlayGround(IPlayGround playGround)

@@ -101,12 +101,9 @@
             {
                 for (int figCol = 0; figCol < shape.Blocks.GetLength(1); figCol++)
                 {
-                    var row = shape.PositionX - 1 + figRow;
-                    var col = shape.PositionY - 1 + figCol;
-
                     if (shape.Blocks[figRow, figCol] == 1)
                     {
-                        playGround.Grid[row, col] = 1;
+                        playGround.Grid[shape.PositionX - 1 + figRow, shape.PositionY - 1 + figCol] = 1;
                     }
                 }
             }

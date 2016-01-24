@@ -1,9 +1,14 @@
 ﻿namespace Tetris.Blocks
 {
+    using System;
+    
     using Tetris.Blocks.Contracts;
 
     public class Figure : IFigure
     {
+        private int positionX;
+        private int positionY;
+
         public Figure(int coordX, int coordY)
         {
             this.PositionX = coordX;
@@ -12,9 +17,39 @@
 
         public byte[,] Blocks { get; set; }
 
-        public int PositionX { get; set; }
+        public int PositionX 
+        {
+            get
+            {
+                return this.positionX;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("The X position of the shape cannot be negative");
+                }
 
-        public int PositionY { get; set; }
+                this.positionX = value;
+            }
+        }
+
+        public int PositionY
+        {
+            get
+            {
+                return this.positionY;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("The X position of the shape cannot be negative");
+                }
+
+                this.positionY = value;
+            }
+        }
 
         public IFigure CloneShape()
         {

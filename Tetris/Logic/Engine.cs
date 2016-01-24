@@ -28,18 +28,23 @@
 
         public Engine()
         {
-            this.CurrentShape = ShapeGenerator.GenerateShape().CloneShape();
-            this.NextShape = ShapeGenerator.GenerateShape().CloneShape();
+            this.shapeGenerator = new ShapeGenerator();
             this.Logic = new GameLogic();
             this.PlayGround = new PlayGround(PlayGroundHeight, PlayGroundWidth);
             this.HighScore = new HighScoreSaver();
+
             this.Score = 0;
             this.Level = 1;
+
+            this.CurrentShape = shapeGenerator.GenerateShape().CloneShape();
+            this.NextShape = shapeGenerator.GenerateShape().CloneShape();
         }
 
         private int Score { get; set; }
 
         private int Level { get; set; }
+
+        private IShapeGenerator shapeGenerator { get; set; }
 
         private IHighScoreSaver HighScore { get; set; }
 
@@ -116,7 +121,7 @@
                     this.Level = (this.Score / 500) + 1;
 
                     this.CurrentShape = this.NextShape;
-                    this.NextShape = ShapeGenerator.GenerateShape().CloneShape();
+                    this.NextShape = shapeGenerator.GenerateShape().CloneShape();
                 }
 
                 this.Logic.MoveDown(this.CurrentShape, PlayGroundHeight);
