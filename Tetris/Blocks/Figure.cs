@@ -13,6 +13,7 @@
         {
             this.PositionX = coordX;
             this.PositionY = coordY;
+            this.Blocks = new byte[1, 1];
         }
 
         public byte[,] Blocks { get; set; }

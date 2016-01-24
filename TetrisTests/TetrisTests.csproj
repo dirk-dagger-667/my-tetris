@@ -50,6 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BlocksTests\TShapeTest.cs" />
+    <Compile Include="BlocksTests\StraightShapeTest.cs" />
+    <Compile Include="BlocksTests\SShapeTest.cs" />
+    <Compile Include="BlocksTests\SquareShapeTest.cs" />
+    <Compile Include="BlocksTests\LShapeTest.cs" />
+    <Compile Include="BlocksTests\JShapeTest.cs" />
+    <Compile Include="BlocksTests\FigureTest.cs" />
+    <Compile Include="BlocksTests\ZShapeTest.cs" />
     <Compile Include="LogicTests\LogicClassTest.cs" />
     <Compile Include="LogicTests\ShapeGeneratorTest.cs" />
     <Compile Include="LogicTests\PlayGroundTest.cs" />
