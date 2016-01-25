@@ -38,7 +38,5 @@
                 Assert.IsTrue(scoreArray[score] > scoreArray[score + 1]);
             }
         }
-
-        public 
     }
 }
