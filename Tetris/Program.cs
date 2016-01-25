@@ -8,8 +8,8 @@
     {       
         public static void Main()
         {
-            //var engine = new Engine();
-            //engine.StartGame();
+            var engine = new Engine();
+            engine.StartGame();
 
             // HighScoreSaver saver = new HighScoreSaver();
             // saver.SaveHightScore("Dimitar", 4, "../../highScore.xml");
