@@ -17,7 +17,7 @@
         private const int InfoPanelWidth = 20;
         private const int FullGameWidth = PlayGroundWidth + InfoPanelWidth + 3;
         private const int FullGameHeight = PlayGroundHeight + 2;
-        private const string FilePath = "../../../highScore.xml";
+        private const string FilePath = "../../highScore.xml";
         private const string EnterYouNameMsg = "Please enter your name: ";
 
         // maximum number of removed lines at once
@@ -131,8 +131,8 @@
                 ConsoleRenderer.DrawBorders(FullGameWidth, FullGameHeight, PlayGroundWidth, InfoPanelWidth);
                 ConsoleRenderer.DrawFigure(this.CurrentShape, this.CurrentShape.PositionX - 1, this.CurrentShape.PositionY);
 
-                // Thread.Sleep(100);
-                Thread.Sleep(speedOfGamePerLevel[Level - 1]);
+                Thread.Sleep(100);
+                //Thread.Sleep(speedOfGamePerLevel[Level - 1]);
                 
             }
         }
