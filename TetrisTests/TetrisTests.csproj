@@ -58,7 +58,6 @@
     <Compile Include="BlocksTests\JShapeTest.cs" />
     <Compile Include="BlocksTests\FigureTest.cs" />
     <Compile Include="BlocksTests\ZShapeTest.cs" />
-    <Compile Include="HightScoreTests\HightCoreSaver.cs" />
     <Compile Include="HightScoreTests\HightScoreTest.cs" />
     <Compile Include="LogicTests\LogicClassTest.cs" />
     <Compile Include="LogicTests\ShapeGeneratorTest.cs" />
